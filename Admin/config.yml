@@ -7,7 +7,7 @@ public_folder: "/images/uploads"
 
 collections:
   - name: "projects"
-    label: "المشاريع"
+    label: "Projects"
     folder: "content/projects" # هنا سيتم حفظ بيانات المشاريع كملفات
     create: true
     fields:
