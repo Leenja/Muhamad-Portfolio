@@ -1,0 +1,1 @@
+document.getElementById('p1').textContent('Updated text');
