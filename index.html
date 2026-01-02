@@ -66,42 +66,47 @@
     }
 
     async function loadProjects() {
-    const portfolio = document.getElementById('portfolio');
+        const portfolio = document.getElementById('portfolio');
 
-    const username = "Leenja"; 
-    const repo = "Muhamad-Portfolio";
-    portfolio.innerHTML = 'Loading Projects...';
+        const apiUrl = "https://api.github.com/repos/Leenja/Muhamad-Portfolio/contents/content/projects";
+        portfolio.innerHTML = 'Loading Projects...';
 
-    try {
-        const response = await fetch(`https://github.com/Leenja/Muhamad-Portfolio/tree/main/content/projects`);
-        
-        if (!response.ok) throw new Error("Folder not found");
+        try {
+            const response = await fetch(apiUrl);
+            
+            if (!response.ok) throw new Error("Folder not found");
 
-        const files = await response.json();
-        portfolio.innerHTML = '';
+            const files = await response.json();
+            portfolio.innerHTML = '';
 
-        for (let file of files) {
-            if (file.name.endsWith('.md')) {
-                const contentRes = await fetch(file.download_url);
-                const text = await contentRes.text();
-                
-                const title = text.match(/title:\s*["']?(.*?)["']?(\r?\n|$)/)?.[1];
-                const image = text.match(/image:\s*["']?(.*?)["']?(\r?\n|$)/)?.[1];
+            for (let file of files) {
+                if (file.name.endsWith('.md')) {
+                    const contentRes = await fetch(file.download_url);
+                    const text = await contentRes.text();
+                    
+                    const titleMatch = text.match(/title:\s*["']?(.*?)["']?(\r?\n|$)/);
+                    const imageMatch = text.match(/image:\s*["']?(.*?)["']?(\r?\n|$)/);
 
-                if (title && image) {
+                    const title = titleMatch ? titleMatch[1] : "Project";
+                    let image = imageMatch ? imageMatch[1] : "";
+
+                    if (image.startsWith('/')) {
+                        image = image;
+                    }
+
                     const card = `
-                    <div class="project-card">
-                        <img src="${image}" alt="${title}">
-                            <div class="project-info">
-                                <h3>${title}</h3>
+                        <div class="project-card">
+                            <img src="${image}" alt="${title}">
+                                <div class="project-info">
+                                    <h3>${title}</h3>
+                                </div>
                             </div>
-                        </div>
-                    `;
-                    portfolio.innerHTML += card;
+                        `;
+                        portfolio.innerHTML += card;
+                    }
                 }
-            }
-        }   
         } catch (e) {
+            console.error("Fetch Error:", e);
             portfolio.innerHTML = 'Error or no projects yet.';
         }
     }
