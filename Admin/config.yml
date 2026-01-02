@@ -2,13 +2,13 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads" # المجلد الذي ستخزن فيه الصور المرفوعة
+media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "projects"
     label: "Projects"
-    folder: "content/projects" # هنا سيتم حفظ بيانات المشاريع كملفات
+    folder: "content/projects"
     create: true
     fields:
       - { label: "Project Title", name: "title", widget: "string" }
