@@ -1,5 +1,5 @@
 ---
 title: New Design
-image: /images/uploads/screenshot-2025-09-29-002907.png
+image: /images/uploads/pack-of-furniture-sales-banners-_-premium-vector.jpeg
 ---
-Welcome
+### ***`Welcome to my portfolio!`***
