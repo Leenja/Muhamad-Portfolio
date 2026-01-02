@@ -11,6 +11,6 @@ collections:
     folder: "content/projects" # هنا سيتم حفظ بيانات المشاريع كملفات
     create: true
     fields:
-      - { label: "اسم المشروع", name: "title", widget: "string" }
-      - { label: "صورة المشروع", name: "image", widget: "image" }
-      - { label: "وصف المشروع", name: "body", widget: "markdown" }
+      - { label: "Project Title", name: "title", widget: "string" }
+      - { label: "Project Image", name: "image", widget: "image" }
+      - { label: "Project Description", name: "body", widget: "markdown" }
