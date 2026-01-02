@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Design Portfolio</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; background: #fafafa; color: #333; }
+        header { padding: 2rem; text-align: center; background: #fff; }
+        h1 { font-weight: 300; letter-spacing: 2px; }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .project-card {
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover { transform: translateY(-5px); }
+        
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .project-info { padding: 15px; }
+        .project-info h3 { margin: 0; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Muhamad Kadam</h1>
+        <p>Interior Designs</p>
+    </header>
+
+    <div class="portfolio-grid" id="portfolio">
+        <div class="project-card">
+            <img src="https://via.placeholder.com/400x300" alt="Testing Project">
+            <div class="project-info">
+                <h3>Modern Living Room Design</h3>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
