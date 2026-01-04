@@ -14,3 +14,13 @@ collections:
       - { label: "Project Title", name: "title", widget: "string" }
       - { label: "Project Image", name: "image", widget: "image" }
       - { label: "Project Description", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "About Me Section"
+        file: "content/about.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string"}
+          - { lable: "Description" , name: description, widget: "markdown"}

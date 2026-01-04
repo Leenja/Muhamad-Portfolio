@@ -52,5 +52,35 @@ async function loadProjects() {
     }
 }
 
+async function loadAbout() {
+    const titleEl = document.getElementById('about-title');
+    const textEl = document.getElementById('about-text');
+    
+    const url = "https://raw.githubusercontent.com/Leenja/Muhamad-Portfolio/main/content/about.md";
+
+    try {
+        const response = await fetch(url);
+        const text = await response.text();
+
+        const titleMatch = text.match(/title:\s*["']?(.*?)["']?(\r?\n|$)/);
+        const descMatch = text.match(/description:\s*(?:["']([\s\S]*?)["']|([\s\S]*?))(?:\r?\n\w+:|$)/);
+
+        if (titleMatch) titleEl.innerText = titleMatch[1];
+        if (descMatch) {
+            let description = descMatch[1] || descMatch[2];
+            textEl.innerText = description.trim();
+        }
+    } catch (e) {
+        console.error("Error loading about section:", e);
+        titleEl.innerText = "About Me";
+        textEl.innerText = "Add text from dashboard.";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadProjects();
+    loadAbout();
+});
+
 // Run the function when the page loads
 document.addEventListener('DOMContentLoaded', loadProjects);

@@ -119,3 +119,44 @@ footer {
 .project-card {
     animation: fadeIn 0.8s ease forwards;
 }
+
+.about-section {
+    padding: 80px 20px;
+    background-color: var(--card-bg); 
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section h2 {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+/* Below About Me word */
+.about-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    width: 50%;
+    height: 1px;
+    background-color: var(--secondary-accent);
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+}
