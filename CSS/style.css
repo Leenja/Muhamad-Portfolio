@@ -1,0 +1,121 @@
+:root {
+    --bg-color: #efe8e4;       
+    --header-bg: #efe6d6;     
+    --card-bg: #ffffff;        
+    --accent-color: #af9784;   
+    --secondary-accent: #d6bb9b; 
+    --text-main: #4a4440;     
+    --border-color: #ddc8b9;   
+}
+
+body {
+    font-family: 'Inter', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+header {
+    padding: 5rem 2rem;
+    text-align: center;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+h1 {
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 2px; 
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(175, 151, 132, 0.2);
+    border-color: var(--secondary-accent);
+}
+
+.project-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.03); 
+}
+
+.project-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.project-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+footer {
+    text-align: center;
+    padding: 60px;
+    background-color: var(--header-bg);
+    border-top: 1px solid var(--border-color);
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+.admin-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.admin-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+#portfolio p {
+    color: var(--accent-color);
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.project-card {
+    animation: fadeIn 0.8s ease forwards;
+}

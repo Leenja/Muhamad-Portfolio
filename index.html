@@ -3,112 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhamad Kadam Portfolio</title>
-    <style>
-        body { font-family: sans-serif; margin: 0; background: #fafafa; color: #333; }
-        header { padding: 2rem; text-align: center; background: #fff; }
-        h1 { font-weight: 300; letter-spacing: 2px; }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        
-        .project-card {
-            background: #fff;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .project-card:hover { transform: translateY(-5px); }
-        
-        .project-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .project-info { padding: 15px; }
-        .project-info h3 { margin: 0; font-size: 1.2rem; }
-    </style>
-
+    <title>Muhamad Kadam | Interior Design</title>
+    
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
 </head>
 <body>
 
     <header>
         <h1>Muhamad Kadam</h1>
-        <p>Interior Designer</p>
+        <p style="color: #888; letter-spacing: 2px;">INTERIOR DESIGNER</p>
     </header>
 
-    <div class="portfolio-grid" id="portfolio"></div>
+    <div class="portfolio-grid" id="portfolio">
+        </div>
 
-    <script>
-    if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-        if (!user) {
-            window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-            });
-        }
-        });
-    }
-
-    async function loadProjects() {
-        const portfolio = document.getElementById('portfolio');
-
-        const apiUrl = "https://api.github.com/repos/Leenja/Muhamad-Portfolio/contents/content/projects";
-        portfolio.innerHTML = 'Loading Projects...';
-
-        try {
-            const response = await fetch(apiUrl);
-            
-            if (!response.ok) throw new Error("Folder not found");
-
-            const files = await response.json();
-            portfolio.innerHTML = '';
-
-            for (let file of files) {
-                if (file.name.endsWith('.md')) {
-                    const contentRes = await fetch(file.download_url);
-                    const text = await contentRes.text();
-                    
-                    const titleMatch = text.match(/title:\s*["']?(.*?)["']?(\r?\n|$)/);
-                    const imageMatch = text.match(/image:\s*["']?(.*?)["']?(\r?\n|$)/);
-
-                    const title = titleMatch ? titleMatch[1] : "Project";
-                    let image = imageMatch ? imageMatch[1] : "";
-
-                    if (image.startsWith('/')) {
-                        image = image;
-                    }
-
-                    const card = `
-                        <div class="project-card">
-                            <img src="${image}" alt="${title}">
-                                <div class="project-info">
-                                    <h3>${title}</h3>
-                                </div>
-                            </div>
-                        `;
-                        portfolio.innerHTML += card;
-                    }
-                }
-        } catch (e) {
-            console.error("Fetch Error:", e);
-            portfolio.innerHTML = 'Error or no projects yet.';
-        }
-    }
-    loadProjects();
-    </script>
-
-    <footer style="text-align: center; padding: 20px; margin-top: 50px;">
-        <a href="/admin/" style="color: #ccc; text-decoration: none; font-size: 12px;">Admin</a>
+    <footer>
+        <p>© 2026 All rights reserved</p>
+        <a href="/admin/" class="admin-link">Dashboard</a>
     </footer>
 
+    <script src="js/script.js"></script>
 </body>
 </html>
